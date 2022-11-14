@@ -1,0 +1,513 @@
+* {
+    box-sizing: border-box;
+    color: var(--dark);
+    font-size: 18px;
+    font-family: 'Twinkle Star', cursive;
+}
+
+body,
+html {
+    margin: 0;
+    background-color: var(--light);
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*Use of :root to set variables as described here: https://www.w3schools.com/css/css3_variables.asp*/
+:root {
+    --light: #d1ecf8;
+    --med: #8db1d0;
+    --dark: #5b7d9b;
+    --paper: #fdf8f3;
+    --dark-txt: #595959;
+    --card-size: 20vw;
+}
+
+.explanation:root {
+    --light: rgb(248, 202, 217);
+    --med: rgb(185, 123, 143);
+    --dark: rgb(105, 66, 79);
+}
+
+.distraction:root {
+    --light: #e4ddff;
+    --med: #a38dd0;
+    --dark: #655b9b;
+}
+
+.about:root {
+    --light: rgb(202, 248, 233);
+    --med: rgb(123, 185, 167);
+    --dark: rgb(66, 105, 102);
+}
+
+.padding-thick {
+    padding: 30px;
+}
+
+.padding-med {
+    padding: 15px;
+}
+
+.padding-light {
+    padding: 5px;
+}
+
+.padding-bttm {
+    padding-bottom: 15vw;
+}
+
+.flex-parent {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 0;
+    padding: 30px;
+}
+
+h2 {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+p {
+    margin: 0;
+}
+
+main {
+    flex-grow: 0.5;
+    margin: auto;
+    position: relative
+}
+
+.megh-writes {
+    font-family: 'Yomogi', cursive;
+    color: var(--dark-txt);
+}
+
+.megh-writes a {
+    font-family: 'Yomogi', cursive;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.megh-writes a:hover {
+    color: var(--med);
+    transition: 0.3s;
+}
+
+.serious p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.serious a {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.serious a:hover {
+    color: var(--med);
+    transition: 0.3s;
+}
+
+
+
+/*Section 1: Primary Navigation*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav {
+    z-index: 1;
+    background-color: var(--dark);
+    position: sticky;
+    top: 0;
+    font-size: 20px;
+}
+
+.button {
+    text-align: center;
+    font-size: 28px;
+    background-color: var(--light);
+}
+
+.button a {
+    /*Setting an entire button as a link is explained here: https://www.codecademy.com/forum_questions/53415e6c9c4e9d734c000038*/
+    display: block;
+    width: 1fr;
+    height: 25px;
+    text-decoration: none;
+    color: var(--dark-txt);
+}
+
+.button:hover {
+    background-color: antiquewhite;
+    transition: 0.3s;
+}
+
+ul .current-location {
+    background-color: antiquewhite;
+}
+
+
+
+/*Section 2: Apology Page*/
+
+.letter {
+    background-color: var(--paper);
+    text-align: justify;
+    width: 75vw;
+    max-width: 800px;
+    margin: auto;
+    height: fit-content;
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--dark);
+}
+
+.letter p {
+    padding: 10px;
+}
+
+/*Envelope code adapted from https://codepen.io/peiche/pen/AxWYdO*/
+.envelope {
+    background: none;
+    border-radius: 0 0 50px 50px;
+    position: relative;
+}
+
+.envelope:after {
+    content: '';
+    border: 0 solid transparent;
+    border-width: 213.4px 426.8px;
+}
+
+.envelope:after {
+    border-right-color: var(--med);
+    border-left-color: var(--med);
+    border-bottom-color: var(--dark);
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 5px 5px var(--dark);
+}
+
+#forgiveness {
+    text-align: center;
+    flex-grow: 0.5;
+}
+
+/* Forgiveness poll functionality from here: https://www.powr.io/poll-for-html-how-to-add-to-your-site?src=tutorials*/
+
+
+
+/* Section 3: Explanation Page*/
+
+/*Flip card functionality borrowed from here: https://www.w3schools.com/howto/howto_css_flip_card.asp*/
+.flip-card-back p {
+    font-family: 'Yomogi', cursive;
+    color: var(--dark-txt);
+}
+
+.flip-card {
+    background-color: transparent;
+    width: var(--card-size);
+    height: var(--card-size);
+    perspective: 2000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card-dark {
+    background-color: var(--dark);
+}
+
+.card-light {
+    background-color: var(--med);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    width: var(--card-size);
+    height: var(--card-size);
+    text-align: center;
+}
+
+.flip-card-back {
+    background-color: antiquewhite;
+    transform: rotateY(180deg);
+    width: var(--card-size);
+    height: var(--card-size);
+    text-align: center;
+}
+
+.flip-card-back p {
+    display: block;
+    margin: auto;
+    padding: 25px 20px;
+    text-align: center;
+}
+
+#FAQ {
+    text-align: center;
+    background-color: var(--med);
+    flex-grow: 0.5;
+    color: var(--light);
+    padding-bottom: 30px;
+}
+
+#FAQ .grid-parent {
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/*Message bubble shape code adapted from here: https://codepen.io/danielkov/pen/WOyYyY*/
+.message-bubble {
+    text-align: center;
+    height: fit-content;
+    /*Fit-content size setting learned from here: https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content*/
+    width: 25vw;
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+.megh {
+    border-bottom-left-radius: 0;
+    background: var(--light);
+    grid-column: 2;
+}
+
+.megh p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--dark);
+}
+
+.user {
+    border-bottom-right-radius: 0;
+    background: var(--dark);
+    grid-column: 3;
+}
+
+.user p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--light);
+}
+
+.megh:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    transform: rotate(0.75turn);
+    border-style: solid;
+    border-width: 30px 0 0 30px;
+    border-color: transparent transparent transparent var(--light);
+    bottom: 0.21px;
+    right: 74vw;
+}
+
+.user:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 30px 0 0 30px;
+    border-color: transparent transparent transparent var(--dark);
+    bottom: 0;
+    right: -20px;
+}
+
+.user,
+.megh {
+    grid-column: 1 / -1;
+}
+
+.message-bubble {
+    width: 75vw;
+    margin: auto;
+}
+
+
+/*Section 4: Distractions Page*/
+
+#tweet-hold {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.twitter-tweet {
+    max-width: 30vw;
+}
+
+
+
+/*Section 5: About Page*/
+
+.bio {
+    grid-template-columns: 1fr 1fr;
+}
+
+.about main,
+.about h2 {
+    padding-top: 0;
+}
+
+
+
+/*Section 6: Page Footer*/
+footer {
+    background-color: var(--dark);
+    text-align: right;
+}
+
+footer a {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+footer a:hover {
+    color: antiquewhite;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+
+
+/*Section 7: Media Queries*/
+
+@media screen and (max-width: 1067px) {
+
+    .envelope:before,
+    .envelope:after {
+        border-width: 20vw 40vw;
+    }
+
+    #tweet-hold {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .twitter-tweet {
+        width: 40vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    /*.megh:after {
+        right: 29.3vw
+    }*/
+
+    /*    .message-bubble {
+        width: 2fr;
+    }
+
+    .user {
+        grid-column: 3 span 2;
+    }
+
+    .megh {
+        grid-column: 1 span 2;
+    }*/
+
+    .grid-parent {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    :root {
+        --card-size: 35vw;
+    }
+
+    .flip-card-back p {
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    .filler {
+        position: absolute;
+    }
+
+    #yes {
+        grid-column: span 2;
+    }
+
+    #no {
+        grid-row: 2;
+        grid-column: span 2;
+    }
+
+    .bio,
+    #card,
+    #tweet-hold {
+        grid-template-columns: 1fr;
+    }
+
+    :root {
+        --card-size: 60vw;
+    }
+
+    .letter {
+        width: 80vw;
+    }
+
+    .envelope:before,
+    .envelope:after {
+        border-width: 20vw 45vw;
+    }
+
+    .padding-bttm {
+        padding-bottom: 30vw;
+    }
+
+    .flip-card-back p {
+        font-size: 32px;
+    }
+
+    .twitter-tweet {
+        width: 70vw;
+    }
+}
